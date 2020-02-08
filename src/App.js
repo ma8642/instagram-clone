@@ -9,11 +9,23 @@ import Post from "./components/Post";
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <Header />
-        <div>
-          <Post />
-        </div>
+        <section className="App-main">
+          <Post
+            nickname="Chris"
+            avatar="https://www.laravelnigeria.com/img/chris.jpg"
+            caption="Moving the community!"
+            image="https://pbs.twimg.com/media/DOXI0IEXkAAkokm.jpg"
+          />
+          <Post
+            nickname="OG"
+            avatar="https://www.laravelnigeria.com/img/chris.jpg"
+            caption="Holding a mic"
+            image="https://pbs.twimg.com/media/DOXI0IEXkAAkokm.jpg"
+          />
+          {/* more posts */}
+        </section>
       </div>
     );
   }
