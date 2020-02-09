@@ -4,7 +4,8 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header";
-import Post from "./components/Post";
+//import Post from "./components/Post";
+import Posts from "./components/Posts";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
@@ -19,7 +20,7 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <section className="App-main">
-            <Post
+            {/* <Post
               nickname="Chris"
               avatar="https://www.laravelnigeria.com/img/chris.jpg"
               caption="Moving the community!"
@@ -31,7 +32,8 @@ class App extends React.Component {
               caption="Holding a mic"
               image="https://pbs.twimg.com/media/DOXI0IEXkAAkokm.jpg"
             />
-            {/* more posts */}
+            more posts */}
+            <Posts apollo_client={client} />
           </section>
         </div>
       </ApolloProvider>
