@@ -20,19 +20,6 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <section className="App-main">
-            {/* <Post
-              nickname="Chris"
-              avatar="https://www.laravelnigeria.com/img/chris.jpg"
-              caption="Moving the community!"
-              image="https://pbs.twimg.com/media/DOXI0IEXkAAkokm.jpg"
-            />
-            <Post
-              nickname="OG"
-              avatar="https://www.laravelnigeria.com/img/chris.jpg"
-              caption="Holding a mic"
-              image="https://pbs.twimg.com/media/DOXI0IEXkAAkokm.jpg"
-            />
-            more posts */}
             <Posts apollo_client={client} />
           </section>
         </div>
