@@ -23,6 +23,13 @@ class App extends React.Component {
       encrypted: true
     });
   }
+  componentDidMount() {
+    if ("actions" in Notification.prototype) {
+      alert("You can enjoy the notification feature");
+    } else {
+      alert("Sorry notifications are NOT supported on your browser");
+    }
+  }
   render() {
     return (
       <ApolloProvider client={client}>

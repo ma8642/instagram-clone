@@ -13,6 +13,8 @@ class Posts extends Component {
     };
   }
   componentDidMount() {
+    // request permission
+    Notification.requestPermission();
     // fetch the initial posts
     console.log(this.props);
     this.props.apollo_client
@@ -40,7 +42,20 @@ class Posts extends Component {
     this.posts_channel.bind(
       "new-post",
       data => {
+        // update states
         this.setState({ posts: this.state.posts.concat(data.post) });
+
+        // check if notifications are permitted
+        if (Notification.permission === "granted") {
+          try {
+            // notify user of new post
+            new Notification("Pusher Instagram Clone", {
+              body: `New post from ${data.post.user.nickname}`
+            });
+          } catch (e) {
+            console.log("Error displaying notification");
+          }
+        }
       },
       this
     );
@@ -48,15 +63,18 @@ class Posts extends Component {
   render() {
     return (
       <div className="Posts">
-        {this.state.posts.map(post => (
-          <Post
-            nickname={post.user.nickname}
-            avatar={post.user.avatar}
-            image={post.image}
-            caption={post.caption}
-            key={post.id}
-          />
-        ))}
+        {this.state.posts
+          .slice()
+          .reverse()
+          .map(post => (
+            <Post
+              nickname={post.user.nickname}
+              avatar={post.user.avatar}
+              image={post.image}
+              caption={post.caption}
+              key={post.id}
+            />
+          ))}
       </div>
     );
   }
